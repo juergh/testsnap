@@ -1,0 +1,24 @@
+#!/bin/bash -eu
+#
+# Install packages in a venv
+#
+
+venv=venv
+
+if [ -z "${VIRTUAL_ENV:-}" ] ; then
+	if ! [ -d "${venv}" ] ; then
+		echo "-- Create venv"
+		python3 -m venv "${venv}"
+	fi
+
+	echo "-- Activate venv"
+	. "${venv}"/bin/activate
+fi
+
+cwd=$(pwd)
+
+(
+	cd testapp
+	rm -rf *.egg-info build dist
+	pip3 install .
+)

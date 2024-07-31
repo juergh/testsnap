@@ -1,0 +1,27 @@
+name: testapp
+summary: testapp
+description: testapp
+version: '0.1'
+
+base: core22
+grade: devel
+confinement: classic
+
+parts:
+  testapp:
+    plugin: python
+    source: .
+    build-attributes:
+       # Prevent lint warnings:
+       # 'ELF rpath should be set to '/snap/core22/current/lib/x86_64-linux-gnu'
+      - enable-patchelf
+    stage-packages:
+      - python3.10-minimal
+    python-packages:
+      - ./testapp
+
+apps:
+  testapp:
+    environment:
+      PYTHONPATH: $SNAP/lib/python3.10/site-packages
+    command: bin/testapp

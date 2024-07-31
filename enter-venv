@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Enter a venv
+#
+
+venv=venv
+
+export debian_chroot=${venv}
+
+echo "-- Enter venv (type 'exit' to leave)"
+. "${venv}"/bin/activate
+bash
+deactivate

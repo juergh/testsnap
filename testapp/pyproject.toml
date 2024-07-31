@@ -1,0 +1,14 @@
+[project]
+name = "testapp"
+version = "0.1"
+requires-python = ">=3.8"
+dependencies = [
+  "click",
+]
+
+[project.scripts]
+testapp = "testapp.testapp:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
